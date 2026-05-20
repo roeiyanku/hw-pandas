@@ -19,10 +19,13 @@ def parties_with_different_relative_order()->tuple:
     pass
     # Put your code here
 
-
 if __name__ == '__main__':
-    party = input()
-    if party == "parties_with_different_relative_order":
-        print(parties_with_different_relative_order())
-    else:
-        print(support_in_one_party_elections(party), support_in_multi_party_elections(party))
+    import doctest
+    print(doctest.testmod())
+
+    # Use this code for testing via console input-output:
+    # party = input()
+    # if party == "parties_with_different_relative_order":
+    #     print(parties_with_different_relative_order())
+    # else:
+    #     print(support_in_one_party_elections(party), support_in_multi_party_elections(party))
