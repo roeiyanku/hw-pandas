@@ -1,0 +1,19 @@
+case=Test 1
+input=מחל
+output=134 162
+
+case=Test 2
+input=פה
+output=109 131
+
+case=Test 3
+input=ר
+output=3 13
+
+case=Test 4
+input=עם
+output=21 27
+
+case=parties_with_different_relative_order
+input=parties_with_different_relative_order
+output=/.*/i
