@@ -1,3 +1,5 @@
+import re
+
 import pytest
 from analyze import support_in_one_party_elections, support_in_multi_party_elections, parties_with_different_relative_order
 from testcases import parse_testcases
@@ -13,7 +15,13 @@ def run_testcase(party:str):
 @pytest.mark.parametrize("testcase", testcases, ids=[testcase["name"] for testcase in testcases])
 def test_cases(testcase):
     actual_output = run_testcase(testcase["input"])
-    assert actual_output == testcase["output"], f"Expected {testcase['output']}, got {actual_output}"
+    expected = testcase["output"]
+    if expected.startswith("/"):  # expected output given as a regex, e.g. /.*/i
+        pattern, _, flags = expected[1:].rpartition("/")
+        assert re.fullmatch(pattern, actual_output, re.IGNORECASE if "i" in flags else 0), \
+            f"Expected match for {expected}, got {actual_output}"
+    else:
+        assert actual_output == expected, f"Expected {expected}, got {actual_output}"
 
 
 def test_new_cases():
