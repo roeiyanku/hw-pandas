@@ -17,5 +17,10 @@ def test_cases(testcase):
 
 
 def test_new_cases():
-    # your new tests here
-    pass
+    assert support_in_one_party_elections("שס") == 13
+    assert support_in_multi_party_elections("שס") == 39
+    result = parties_with_different_relative_order()
+    assert result is None or (
+        support_in_one_party_elections(result[0]) > support_in_one_party_elections(result[1])
+        and support_in_multi_party_elections(result[0]) < support_in_multi_party_elections(result[1])
+    )
